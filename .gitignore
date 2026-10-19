@@ -1,6 +1,22 @@
-build/
-dist/
-nbproject/private/
+# NetBeans private settings and generated output
+/nbproject/private/
+/build/
+/dist/
+
+# Editor and operating system files
 .vscode/
+*.log
+.DS_Store
+Thumbs.db
+
+# Compiled files
 *.class
 *.war
+
+# Database exports and local settings, these can hold student data and passwords
+*.sql
+*.csv
+*.xlsx
+*.bak
+.env
+.env.*
