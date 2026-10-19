@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACET | Online Student Portal</title>
+<style>
+*{box-sizing:border-box}
+:root{--navy:#0b1f43;--blue:#174f96;--text:#172b4d;--border:#dce7f5}
+html{width:100%;height:100%;margin:0;overflow:hidden}
+body{width:100%;height:100vh;height:100dvh;min-height:0;margin:0;display:flex;flex-direction:column;overflow:hidden;font-family:"Segoe UI",Arial,sans-serif;color:var(--text);
+background:radial-gradient(circle at 10% 35%,rgba(80,145,255,.13),transparent 30%),radial-gradient(circle at 90% 65%,rgba(93,231,255,.13),transparent 30%),#f4f8ff}
+
+/* HEADER */
+.college-header{position:relative;flex:0 0 auto;width:100%;overflow:hidden;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 3px 15px rgba(16,42,75,.06)}
+.banner{display:block;width:100%;max-width:1600px;height:clamp(80px,15vh,160px);margin:0 auto;object-fit:contain;object-position:center;background:#fff}
+.header-datetime{position:absolute;top:12px;right:3%;z-index:2;min-width:195px;padding:10px 15px;text-align:center;color:#fff;background:linear-gradient(135deg,#0b1f43,#174f96,#168cb8);border:1px solid rgba(255,255,255,.5);border-radius:13px;box-shadow:0 7px 20px rgba(23,79,150,.22);animation:clockAppear .7s ease both}
+.header-date{color:#d9efff;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.header-time{margin:5px 0;font-size:23px;font-weight:800;letter-spacing:1px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.header-zone{color:#d9efff;font-size:9px;letter-spacing:.7px;white-space:nowrap}
+.datetime-dot{display:inline-block;width:6px;height:6px;margin-right:4px;border-radius:50%;background:#5ee7a5;box-shadow:0 0 8px #5ee7a5}
+@keyframes clockAppear{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* MAIN */
+main{flex:1 1 auto;min-height:0;display:flex;justify-content:center;align-items:stretch;padding:clamp(6px,1.2vh,14px) 2%;overflow:hidden}
+.login-layout{width:100%;height:100%;max-width:1480px;min-height:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,430px) minmax(0,1.15fr);align-items:center;gap:clamp(12px,1.8vw,26px)}
+.login-column{min-width:0;width:100%}
+.welcome-heading{max-width:720px;margin:0 auto clamp(8px,1.6vh,18px);text-align:center}
+.welcome-heading h1{margin:0;font-size:clamp(22px,2.4vw,34px);line-height:1.25;font-weight:850;letter-spacing:-.6px;background:linear-gradient(90deg,#102b59,#2869d5,#00a9cc,#2869d5,#102b59);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientFlow 5s linear infinite}
+.welcome-heading p{margin:7px 0 0;color:#667995;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;line-height:1.5}
+@keyframes gradientFlow{0%{background-position:0% center}100%{background-position:250% center}}
+
+/* PLACEMENT PANELS: TALL */
+.student-panel{position:relative;height:100%;max-height:640px;min-height:0;padding:clamp(12px,2vh,22px) clamp(12px,1.2vw,20px);overflow:hidden;display:flex;flex-direction:column;align-items:stretch;gap:clamp(6px,1.2vh,12px);text-align:center;color:#fff;border:1px solid rgba(255,255,255,.7);border-radius:26px;
+background:radial-gradient(circle at 15% 10%,rgba(108,221,255,.38),transparent 32%),radial-gradient(circle at 90% 90%,rgba(138,114,255,.38),transparent 35%),linear-gradient(160deg,#0e2652,#1757a8 55%,#1788c3);box-shadow:0 18px 44px rgba(26,76,148,.2);isolation:isolate}
+.student-panel::before,.student-panel::after{content:"";position:absolute;z-index:-1;border:1px solid rgba(255,255,255,.16);border-radius:50%;animation:orbit 13s linear infinite}
+.student-panel::before{width:240px;height:240px;top:-100px;right:-100px}
+.student-panel::after{width:190px;height:190px;bottom:-80px;left:-70px;animation-direction:reverse}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.panel-label{align-self:center;padding:6px 12px;border:1px solid rgba(255,255,255,.26);border-radius:30px;background:rgba(255,255,255,.11);color:#d8f6ff;font-size:10px;font-weight:800;letter-spacing:1.2px}
+.student-panel h2{margin:0;font-size:clamp(19px,2vw,27px);line-height:1.25;letter-spacing:-.3px}
+.panel-sub{margin:0;color:#d8e9ff;font-size:clamp(11px,1.2vh + 3px,13px);line-height:1.5}
+
+/* top package spotlight */
+.spotlight{display:flex;align-items:center;gap:14px;padding:clamp(8px,1.4vh,14px) 16px;text-align:left;border:1px solid rgba(255,255,255,.3);border-radius:18px;background:linear-gradient(120deg,rgba(255,255,255,.2),rgba(255,255,255,.08))}
+.spot-photo{position:relative;flex-shrink:0}
+.spot-photo img{display:block;width:clamp(64px,11vh,104px);height:clamp(64px,11vh,104px);object-fit:cover;object-position:center 22%;border-radius:50%;border:4px solid #ffd45e;background:#eaf2ff;box-shadow:0 0 0 4px rgba(255,255,255,.25),0 10px 22px rgba(0,0,0,.28)}
+.spot-photo span{position:absolute;right:-6px;bottom:-4px;width:clamp(26px,3.8vh,34px);height:clamp(26px,3.8vh,34px);display:flex;align-items:center;justify-content:center;border-radius:50%;background:#fff;font-size:clamp(14px,2.2vh,19px);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.spotlight small{display:block;font-size:10px;letter-spacing:1.3px;color:#d8f6ff}
+.spotlight strong{display:block;font-size:clamp(28px,5vh,42px);line-height:1.1;font-weight:900;background:linear-gradient(90deg,#fff,#5ee7ff,#fff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientFlow 4s linear infinite}
+.spotlight em{font-style:normal;font-size:11px;color:#bfe9ff}
+.spot-name{display:block;margin:2px 0 1px;font-size:clamp(12px,1.9vh,16px);font-weight:800;line-height:1.25}
+
+/* big placed-student cards */
+.achiever-list{flex:1;min-height:0;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:clamp(6px,1.1vh,10px)}
+.achiever-list li{flex:1;min-height:0;display:flex;align-items:center;gap:14px;padding:6px 14px;text-align:left;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(255,255,255,.11);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.avatar{width:clamp(48px,8vh,70px);height:clamp(48px,8vh,70px);flex-shrink:0;object-fit:cover;object-position:center top;border:3px solid rgba(255,255,255,.9);border-radius:50%;background:linear-gradient(145deg,#eaf2ff,#d6e6ff);box-shadow:0 6px 14px rgba(0,0,0,.2)}
+.who{flex:1;min-width:0}
+.who b{display:block;font-size:clamp(13px,2vh,16px);line-height:1.25;letter-spacing:.2px}
+.who span{display:block;margin-top:2px;font-size:clamp(11px,1.6vh,13px);color:#bfe9ff}
+.pkg{flex-shrink:0;padding:6px 12px;border-radius:14px;text-align:center;line-height:1.1;font-size:clamp(17px,2.8vh,24px);font-weight:900;color:#0e2652;background:linear-gradient(135deg,#fff,#d8f6ff)}
+.pkg small{display:block;margin-top:2px;font-size:9px;font-weight:800;letter-spacing:.8px;color:#2a5a9c}
+
+/* right panel */
+.co-groups{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,1.1vh,10px)}
+.co-group{flex:1;min-height:0;padding:clamp(6px,1vh,10px) 14px;text-align:left;border:1px solid rgba(255,255,255,.22);border-radius:16px;background:rgba(255,255,255,.1)}
+.co-group h3{margin:0;font-size:clamp(11px,1.6vh,13px);letter-spacing:.9px;text-transform:uppercase;color:#ffe9a8}
+.co-desc{margin:2px 0 clamp(4px,.8vh,8px);font-size:clamp(10px,1.4vh,12px);line-height:1.4;color:#cfe7ff}
+.co-chips{display:flex;flex-wrap:wrap;gap:6px}
+.co-chips span,.co-chips a{padding:clamp(3px,.6vh,5px) 10px;font-size:clamp(11px,1.55vh,13px);font-weight:700;border-radius:20px;background:#fff;color:#12315f;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.co-chips a{text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s}
+.co-chips a:hover{transform:translateY(-2px);background:#d8f6ff;box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.co-chips a:focus-visible{outline:3px solid #ffe9a8;outline-offset:2px}
+.demo-tag{align-self:center;padding:4px 10px;font-size:9px;font-weight:800;letter-spacing:.6px;color:#ffe9a8;border:1px dashed rgba(255,233,168,.6);border-radius:6px}
+
+/* LOGIN CARD */
+.login-card{width:100%;padding:clamp(16px,2.5vh,29px) clamp(19px,2vw,30px);background:rgba(255,255,255,.95);border:1px solid rgba(215,228,246,.95);border-radius:22px;box-shadow:0 20px 50px rgba(24,55,100,.12),0 3px 10px rgba(24,55,100,.04);animation:cardAppear .8s ease both}
+@keyframes cardAppear{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.login-tag{display:block;width:fit-content;margin:0 auto 10px;padding:6px 11px;border:1px solid #d8e7ff;border-radius:30px;background:linear-gradient(135deg,#edf4ff,#e8fbff);color:#2456a6;font-size:9px;font-weight:800;letter-spacing:1.4px}
+.login-card h2{margin:0;text-align:center;color:#102a43;font-size:27px;font-weight:800}
+.intro{margin:8px 0 17px;text-align:center;color:#64748b;font-size:12px;line-height:1.6}
+label{display:block;margin:13px 0 6px;color:#334968;font-size:11px;font-weight:700}
+input{display:block;width:100%;padding:11px 13px;border:1px solid #ccd9eb;border-radius:10px;background:#fafdff;color:#172b4d;font-family:inherit;font-size:12px;transition:border-color .25s,box-shadow .25s,background .25s}
+input::placeholder{color:#9aa9bc}
+input:focus{outline:none;border-color:#3977d5;box-shadow:0 0 0 4px rgba(57,119,213,.12);background:#fff}
+button{width:100%;margin-top:19px;padding:12px;border:none;border-radius:10px;background:linear-gradient(105deg,#123b79,#2368c5,#168cb8);background-size:200% auto;color:#fff;font-family:inherit;font-size:13px;font-weight:800;letter-spacing:.4px;cursor:pointer;box-shadow:0 8px 20px rgba(35,104,197,.22);transition:background-position .35s,box-shadow .25s,transform .25s}
+button:hover{background-position:right center;transform:translateY(-2px);box-shadow:0 12px 25px rgba(35,104,197,.3)}
+button:active{transform:translateY(0)}
+.help-note{margin-top:12px;padding:9px;border:1px solid #e5eef9;border-radius:10px;background:#f4f8fe;color:#6b7d95;font-size:10px;line-height:1.6;text-align:center}
+.help-note a{color:#2456a6;font-weight:700;text-decoration:none}
+.help-note a:hover{text-decoration:underline}
+.security-note{margin-top:10px;text-align:center;color:#7a8ba1;font-size:9px}
+.security-note span{color:#16835e;font-weight:700}
+
+/* FOOTER */
+footer{flex:0 0 auto;padding:7px 12px;border-top:1px solid #e0e8f1;background:rgba(255,255,255,.96);color:#718096;text-align:center;font-size:10px;line-height:1.5}
+footer strong{color:#315784}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+.login-layout{grid-template-columns:minmax(0,430px);justify-content:center;gap:0}
+.student-panel{display:none}
+.banner{height:clamp(90px,16vh,150px)}
+.welcome-heading h1{font-size:clamp(23px,3.5vw,32px)}}
+@media(max-width:600px){
+.banner{height:clamp(95px,15vh,130px);padding:37px 5px 3px}
+.header-datetime{top:5px;right:7px;min-width:0;padding:5px 8px;border-radius:8px}
+.header-date{font-size:7px;letter-spacing:.2px}
+.header-time{margin:2px 0;font-size:15px;letter-spacing:.3px}
+.header-zone{font-size:6px;letter-spacing:.3px}
+main{padding:8px 12px}
+.welcome-heading{margin-bottom:12px}
+.welcome-heading h1{font-size:clamp(20px,6vw,27px);letter-spacing:-.3px}
+.welcome-heading p{margin-top:5px;font-size:9px;letter-spacing:.6px}
+.login-card{padding:clamp(14px,2.5vh,22px) 19px;border-radius:18px}
+.login-tag{margin-bottom:8px}
+.login-card h2{font-size:23px}
+.intro{margin:6px 0 13px;font-size:11px}
+label{margin:10px 0 5px}
+input{padding:10px 11px}
+button{margin-top:15px;padding:11px}
+.help-note{margin-top:10px;padding:7px;font-size:9px}
+.security-note{margin-top:8px}
+footer{padding:6px 8px;font-size:9px}}
+@media(max-height:700px){
+.banner{height:clamp(66px,12vh,100px)}
+main{padding-top:4px;padding-bottom:4px}
+.welcome-heading{margin-bottom:6px}
+.welcome-heading h1{font-size:clamp(19px,3.2vh,26px)}
+.welcome-heading p{margin-top:3px;font-size:9px}
+.login-card{padding:10px 21px}
+.login-tag{margin-bottom:5px;padding:4px 9px}
+.login-card h2{font-size:21px}
+.intro{margin:4px 0 8px;line-height:1.4}
+label{margin-top:7px}
+input{padding:8px 10px}
+button{margin-top:10px;padding:9px}
+.help-note{margin-top:7px;padding:6px;line-height:1.4}
+.security-note{margin-top:6px}
+footer{padding:4px 8px;font-size:9px}
+.panel-sub,.co-desc{display:none}
+.student-panel{padding:10px 14px}}
+@media(max-width:360px){
+.header-date{font-size:6px}.header-time{font-size:13px}.header-zone{font-size:5px}
+.login-card{padding-right:14px;padding-left:14px}
+.welcome-heading h1{font-size:20px}}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- COLLEGE BANNER AND LIVE CLOCK -->
+<header class="college-header">
+    <img src="images/acet-banner.jpg" alt="Aditya College of Engineering and Technology" class="banner">
+    <div class="header-datetime">
+        <div class="header-date" id="currentDate">Loading date...</div>
+        <div class="header-time" id="currentTime">--:--:--</div>
+        <div class="header-zone"><span class="datetime-dot"></span>INDIAN STANDARD TIME</div>
+    </div>
+</header>
+
+<main>
+<div class="login-layout">
+
+    <!-- LEFT: OUR STUDENTS, OUR PRIDE -->
+    <aside class="student-panel left-panel">
+        <span class="panel-label">PLACEMENT ACHIEVERS</span>
+        <h2>Our Students, Our Pride</h2>
+
+        <div class="spotlight">
+            <div class="spot-photo">
+                <img src="images/student-profile.jpg" alt="Soudharwad Aditya" onerror="this.style.visibility='hidden'">
+                <span aria-hidden="true">🏆</span>
+            </div>
+            <div>
+                <small>HIGHEST PACKAGE</small>
+                <strong>₹ 56 LPA</strong>
+                <b class="spot-name">SOUDHARWAD ADITYA</b>
+                <em>24R01A6656 · Google SDE 1</em>
+            </div>
+        </div>
+
+        <ul class="achiever-list">
+            <li><img class="avatar" src="images/aman-photo.png" alt="" onerror="this.style.visibility='hidden'"><div class="who"><b>MOHAMMED AMAN</b><span>Amazon</span></div><div class="pkg">₹38<small>LPA</small></div></li>
+            <li><img class="avatar" src="images/manideep-photo.png" alt="" onerror="this.style.visibility='hidden'"><div class="who"><b>SHIVA MANIDEEP</b><span>Deloitte</span></div><div class="pkg">₹24<small>LPA</small></div></li>
+            <li><img class="avatar" src="images/shruthi-photo.png" alt="" onerror="this.style.visibility='hidden'"><div class="who"><b>SHRUTHI DAMODAR PURELLA</b><span>Accenture</span></div><div class="pkg">₹19<small>LPA</small></div></li>
+            <li><img class="avatar" src="images/karthikeya-photo.jpg" alt="" onerror="this.style.visibility='hidden'"><div class="who"><b>VYATAKULA KARTHIKEYA REDDY</b><span>Capgemini</span></div><div class="pkg">₹10.5<small>LPA</small></div></li>
+        </ul>
+
+        <div class="demo-tag">DEMO CONTENT · NOT VERIFIED ACET RECORDS</div>
+    </aside>
+
+    <!-- CENTER LOGIN -->
+    <section class="login-column">
+        <div class="welcome-heading">
+            <h1>Welcome to the ACET Student Portal</h1>
+            <p>Your campus. Your progress. Your future.</p>
+        </div>
+
+        <div class="login-card">
+            <span class="login-tag">STUDENT ACCESS</span>
+            <h2>Student Login</h2>
+            <p class="intro">Sign in with your student credentials to access your academic dashboard.</p>
+
+            <!-- EXISTING SERVLET LOGIN ENDPOINT -->
+            <form action="Login" method="post">
+                <label for="username">Username, Roll Number or Full Name</label>
+                <input type="text" id="username" name="username" placeholder="Enter username, roll number or full name" autocomplete="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+
+                <button type="submit">Sign In &#8594;</button>
+            </form>
+
+            <div class="help-note">Use your username, roll number or full name and your password.<br>Trouble signing in? Contact portal support: <a href="mailto:acet.support@acet.com">acet.support@acet.com</a></div>
+            <div class="security-note"><span>● Secure student access</span> &nbsp; | &nbsp; ACET Portal</div>
+        </div>
+    </section>
+
+    <!-- RIGHT: YOUR FUTURE STARTS HERE -->
+    <aside class="student-panel right-panel">
+        <span class="panel-label">CAREER OPPORTUNITIES</span>
+        <h2>Your Future Starts Here</h2>
+        <p class="panel-sub">Leading companies that regularly hire B.Tech freshers in India. Tap a company to open its official careers page, then build your skills in coding, DSA and SQL.</p>
+
+        <div class="co-groups">
+            <div class="co-group">
+                <h3>IT Services &amp; Consulting</h3>
+                <p class="co-desc">Hire in large batches for developer, testing, analyst and support roles.</p>
+                <div class="co-chips"><a href="https://www.tcs.com/careers" target="_blank" rel="noopener noreferrer" title="Open TCS careers (official site)">TCS</a><a href="https://www.infosys.com/careers/" target="_blank" rel="noopener noreferrer" title="Open Infosys careers (official site)">Infosys</a><a href="https://careers.wipro.com/" target="_blank" rel="noopener noreferrer" title="Open Wipro careers (official site)">Wipro</a><a href="https://careers.cognizant.com/" target="_blank" rel="noopener noreferrer" title="Open Cognizant careers (official site)">Cognizant</a><a href="https://www.hcltech.com/careers" target="_blank" rel="noopener noreferrer" title="Open HCLTech careers (official site)">HCLTech</a><a href="https://careers.techmahindra.com/" target="_blank" rel="noopener noreferrer" title="Open Tech Mahindra careers (official site)">Tech Mahindra</a><a href="https://www.capgemini.com/careers/" target="_blank" rel="noopener noreferrer" title="Open Capgemini careers (official site)">Capgemini</a><a href="https://www.accenture.com/in-en/careers" target="_blank" rel="noopener noreferrer" title="Open Accenture careers (official site)">Accenture</a></div>
+            </div>
+            <div class="co-group">
+                <h3>Product &amp; Cloud Companies</h3>
+                <p class="co-desc">Software engineering and cloud roles; strong coding and DSA needed.</p>
+                <div class="co-chips"><a href="https://careers.microsoft.com/" target="_blank" rel="noopener noreferrer" title="Open Microsoft careers (official site)">Microsoft</a><a href="https://www.amazon.jobs/" target="_blank" rel="noopener noreferrer" title="Open Amazon careers (official site)">Amazon</a><a href="https://www.google.com/about/careers/applications/" target="_blank" rel="noopener noreferrer" title="Open Google careers (official site)">Google</a><a href="https://careers.oracle.com/" target="_blank" rel="noopener noreferrer" title="Open Oracle careers (official site)">Oracle</a><a href="https://careers.adobe.com/" target="_blank" rel="noopener noreferrer" title="Open Adobe careers (official site)">Adobe</a><a href="https://careers.salesforce.com/" target="_blank" rel="noopener noreferrer" title="Open Salesforce careers (official site)">Salesforce</a></div>
+            </div>
+            <div class="co-group">
+                <h3>Consulting, Finance &amp; Data</h3>
+                <p class="co-desc">Technology, analytics and business roles for engineering graduates.</p>
+                <div class="co-chips"><a href="https://apply.deloitte.com/careers" target="_blank" rel="noopener noreferrer" title="Open Deloitte careers (official site)">Deloitte</a><a href="https://www.ey.com/en_in/careers" target="_blank" rel="noopener noreferrer" title="Open EY careers (official site)">EY</a><a href="https://home.kpmg/in/en/home/careers.html" target="_blank" rel="noopener noreferrer" title="Open KPMG careers (official site)">KPMG</a><a href="https://www.pwc.in/careers.html" target="_blank" rel="noopener noreferrer" title="Open PwC careers (official site)">PwC</a><a href="https://careers.jpmorgan.com/" target="_blank" rel="noopener noreferrer" title="Open JPMorgan Chase careers (official site)">JPMorgan Chase</a></div>
+            </div>
+        </div>
+
+        <div class="demo-tag">GENERAL INDUSTRY LIST · NOT AN ACET PLACEMENT RECORD</div>
+    </aside>
+
+</div>
+</main>
+
+<footer>
+    &copy; 2026 <strong>Aditya College of Engineering &amp; Technology</strong><br>
+    Online Student Portal | Student Access
+</footer>
+
+<script>
+function updateDateTime() {
+    const now = new Date();
+    document.getElementById("currentDate").textContent =
+        new Intl.DateTimeFormat("en-IN", {weekday:"long",day:"2-digit",month:"short",year:"numeric",timeZone:"Asia/Kolkata"}).format(now);
+    document.getElementById("currentTime").textContent =
+        new Intl.DateTimeFormat("en-IN", {hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true,timeZone:"Asia/Kolkata"}).format(now);
+}
+updateDateTime();
+setInterval(updateDateTime, 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+
+# NetBeans private configuration
+/nbproject/private/
+
+# Generated build output
+/build/
+/dist/
+
+# IDE and operating system files
+/nbproject/private/
+*.log
+.DS_Store
+Thumbs.db
+
+# Database exports and local environment files
+*.sql
+.env
+.env.*
+
+*.csv
+*.xlsx
+*.bak
